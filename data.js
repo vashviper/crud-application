@@ -1,20 +1,4 @@
-let todos = [
-    {
-        "id": 50,
-        "name": "Wash Toilet",
-        "urgency": 10
-    },
-    {
-        "id": 50,
-        "name": "Mop Floor",
-        "urgency": 10
-    },
-    {
-        "id": 14,
-        "name": "Wash Dishes",
-        "urgency": 7
-    }
-];
+let todos = [];
 
 function addTodo(todos, name, urgency) {
     let newTodo = {
@@ -44,14 +28,13 @@ function modifyTask(todos, id, newTaskName, newUrgency) { // id = 30
     }
 }
 
-function deleteTask(todos, id) { // id = 50
-    let indexToDelete = null; // 0
+function deleteTask(todos, id) { 
+    let indexToDelete = null; 
 
     // loop through todos array
     for (let i = 0; i < todos.length; i++) {
         if (todos[i].id == id) {
             indexToDelete = i;
-            break;
         }
     }
 
@@ -61,4 +44,21 @@ function deleteTask(todos, id) { // id = 50
     } else {
         console.log("Task is not found");
     }
+}
+
+
+function deleteAllTaskWithId(todos, id) {
+    let indexToDeleteArray = []
+
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i].id == id) {
+            indexToDeleteArray.push(i)
+        }
+    }
+
+    for (let i = indexToDeleteArray.length - 1; i >= 0; i--) {
+        let indexToDelete = indexToDeleteArray[i]
+        todos.splice(indexToDelete, 1);
+    }
+    
 }
